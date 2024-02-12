@@ -12,14 +12,14 @@ class Solution {
         int max = -1;
         Set<Integer> keys = map.keySet();
         for (int key: keys) {
-
             if (key % 2 == 0) {
-                if ((map.get(key) == map.get(max)) && (key < max)) {
+                int valueAtKey = map.get(key);
+                int valueAtMax = map.get(max);
+                if ((valueAtKey == valueAtMax) && (key < max)) {
                     max = key;
-                } else if (map.get(key) > map.get(max)) {
+                } else if (valueAtKey > valueAtMax) {
                     max = key;
                 }
-
             }
         }
         return max;
