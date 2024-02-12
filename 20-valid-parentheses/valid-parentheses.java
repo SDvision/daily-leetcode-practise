@@ -12,19 +12,20 @@ class Solution {
                 if (st.isEmpty()) {
                     return false;
                 }
+                String topStk = st.pop();
                 if (ch.equals(")")) {
-                    if (!st.pop().equals("("))
+                    if (!topStk.equals("("))
                         return false;
                 } if (ch.equals("]")) {
-                    if (!st.pop().equals("["))
+                    if (!topStk.equals("["))
                         return false;
                 } if (ch.equals("}")) {
-                    if (!st.pop().equals("{"))
+                    if (!topStk.equals("{"))
                         return false;
                 }
             }
         }
-        if (i == s.length() && st.isEmpty()) {
+        if (st.isEmpty()) {
             return true;
         }
         return false;
