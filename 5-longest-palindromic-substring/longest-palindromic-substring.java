@@ -1,7 +1,5 @@
 class Solution {
-    boolean isPalindrome(String s) {
-        int i = 0;
-        int j = s.length() - 1;
+    boolean isPalindrome(String s, int i, int j) {
         while (i < j) {
             if (s.charAt(i) != s.charAt(j)) {
                 return false;
@@ -13,19 +11,12 @@ class Solution {
     }
 
     public String longestPalindrome(String s) {
-        if (s.length() == 1) {
-            return s;
-        }
         String result = "";
-        for (int i = 0; i < s.length() - 1; i++) {
-            for (int j = i; j <= s.length(); j++) {
-                String subS = s.substring(i, j);
-                if (j == s.length()) {
-                    subS = s.substring(i);
-                }
-                if (isPalindrome(subS)) {
-                    if (result.length() < subS.length()) {
-                        result = subS;
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                if (isPalindrome(s, i, j)) {
+                    if (result.length() < j - i + 1) {
+                        result = s.substring(i, j+1);
                     }
                 }
             }
