@@ -13,7 +13,7 @@ class Solution {
                     r--;
                 } else if (nums[i] + nums[l] + nums[r] == 0){
                     result.add(Arrays.asList(nums[i], nums[l], nums[r]));
-                    l++;
+                    r--;
                 }
             }
         }
