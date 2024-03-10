@@ -3,17 +3,17 @@ class Solution {
         int row = grid.length;
         int col = grid[0].length;
         int count = 0;
-
-        for (int i = 0; i < row; i++) {
-            for (int j = col - 1; j >= 0; j--) {
-                if (grid[i][j] < 0) {
-                    count++;
-                } else {
-                    break;
-                }
+        int i = row - 1;
+        int j = 0;
+        while (i >= 0 && j < col) {
+            if (grid[i][j] >= 0) {
+                j++;
+                continue;
+            } else {
+                count = count + (col - j);
+                i--;
             }
         }
-
         return count;
     }
 }
