@@ -12,8 +12,6 @@ class NumMatrix {
         pSum[0][0] = matrix[0][0];
         int row = matrix.length;
         int col = matrix[0].length;
-        System.out.println("Row : " + row);
-        System.out.println("Col : " + col);
         // fill first row
         if (col > 1) {
             for (int i = 1; i < col; i++) {
@@ -34,13 +32,6 @@ class NumMatrix {
                 }
             }
         }
-
-        for (int i = 0; i < row; i++) {
-            System.out.println();
-            for (int j = 0; j < col; j++) {
-                System.out.print(pSum[i][j] + " ");
-            }
-        }
     }
 
     int getVal(int row, int col) {
@@ -53,8 +44,6 @@ class NumMatrix {
         int a = getVal(row1 - 1, col2);
         int b = getVal(row2, col1 - 1);
         int c = getVal(row1 - 1, col1 - 1);
-        System.out.println();
-        System.out.println("Sol : " + (s-a-b+c));
         return s - a - b + c;
     }
 }
