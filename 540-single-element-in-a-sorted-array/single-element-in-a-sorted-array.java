@@ -3,7 +3,7 @@ class Solution {
         if (nums.length == 1) return nums[0];
 
         int l = 0;
-        int r = nums.length;
+        int r = nums.length - 1;
 
         while (l <= r) {
             int m = l + (r - l) / 2;
