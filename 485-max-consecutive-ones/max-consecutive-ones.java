@@ -4,7 +4,7 @@ class Solution {
         int currOne = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 1) {
-                if (max < ++currOne) max = currOne;
+                max = Math.max(max, ++currOne);
             } else {
                 currOne = 0;
             }
