@@ -6,10 +6,8 @@ class Solution {
         for (int i = 2; i <= num/2; i++) {
             if (num % i == 0) {
                 if (one == 0) {
-                    System.out.println("one" + one);
                     one = i;
                 } else {
-                    System.out.println("two" + two);
                     two = i;
                 }
                 divisors--;
