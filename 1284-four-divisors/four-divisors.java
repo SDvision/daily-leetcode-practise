@@ -1,35 +1,25 @@
 class Solution {
-    public int get4DivisorSum(int num) {
-        int divisors = 2;
-        int one = 0;
-        int two = 0;
-        for (int i = 2; i <= num/2; i++) {
+    public int findDiv(int num) {
+        int count = 0;
+        int sum = 0;
+        for (int i = 1; i*i <= num; i++) {
             if (num % i == 0) {
-                if (one == 0) {
-                    one = i;
+                if (num / i == i) {
+                    sum += i;
+                    count++;
                 } else {
-                    two = i;
+                    sum += i + (num/i);
+                    count+=2;
                 }
-                divisors--;
-            }
-            if (divisors == -1) {
-                return 0;
             }
         }
-        if (divisors == 0) {
-            return 1 + num + one + two;
-        } else {
-            return 0;
-        }
+        return count == 4 ? sum : 0;
     }
     
     public int sumFourDivisors(int[] nums) {
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] < 6) {
-                continue;
-            }
-            sum += get4DivisorSum(nums[i]);
+            sum += findDiv(nums[i]);
         }
         return sum;
     }
