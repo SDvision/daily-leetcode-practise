@@ -5,8 +5,7 @@ class Solution {
         for (int i = 1; i*i <= num; i++) {
             if (num % i == 0) {
                 if (num / i == i) {
-                    sum += i;
-                    count++;
+                    return 0;
                 } else {
                     sum += i + (num/i);
                     count+=2;
