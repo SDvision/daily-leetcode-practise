@@ -1,37 +1,33 @@
 class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        int first = -1;
-        int last = -1;
 
-        first = findFirstOrLast(nums, target, true);
-        last = findFirstOrLast(nums, target, false);
+    public static int getFirstOrLastInst(int target, int[] arr, boolean isFirst) {
+        int l = 0, r = arr.length-1;
+        int targetIdx = -1;
 
-        return new int[]{first, last};
-    }
-
-    int findFirstOrLast(int[] arr, int target, boolean isFirst) {
-        int l = 0;
-        int r = arr.length - 1;
-        int ans = -1;
-        while (l <= r) {
-            int m = l + (r - l)/2;
-            
-            if (arr[m] == target) {
-                ans = m;
-                if (isFirst) {
-                    r = m - 1;
-                } else {
-                    l = m + 1;
-                }
-            } else if (arr[m] < target) {
-                l = m + 1;
+        while(l <= r) {
+            int mid = (l + r)/2;
+            if (target == arr[mid]) {
+                targetIdx = mid;
+                if (isFirst) r = mid - 1;
+                if (!isFirst) l = mid + 1;
+            } else if (target < arr[mid]) {
+                r = mid - 1;
             } else {
-                r = m - 1;
+                l = mid + 1;
             }
         }
-        if (ans == -1) {
-            return -1;
+        return targetIdx;
+    }
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans  = {-1, -1};
+        if (nums.length == 0) {
+            return ans;
         }
+
+        ans[0] = getFirstOrLastInst(target, nums, true);
+        ans[1] = getFirstOrLastInst(target, nums, false);
+        
         return ans;
     }
 }
